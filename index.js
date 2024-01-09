@@ -175,17 +175,17 @@ function renderProgressArea(max, name){
         showExerciseContent()
     })
     //lbs to kg
-    convertEl.addEventListener("dblclick",function(){
+    convertEl.addEventListener("click",function(){
         if(isKg){
             maxEl.textContent = `PR Max Weight: ${(max/0.45359237).toFixed(1)}lbs` 
             isKg = false
             convertEl.textContent = "Convert to kg"
             inputEl.setAttribute("placeholder", "Enter PR in lbs")
         }else{
+            inputEl.setAttribute("placeholder", "Enter PR in kg")
             maxEl.textContent = `PR Max Weight: ${(max.toFixed(1))}kg` 
             isKg = true
             onvertEl.textContent = "Convert to lbs"
-            inputEl.setAttribute("placeholder", "Enter PR in kg")
         }
         
     })
