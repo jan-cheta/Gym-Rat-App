@@ -127,10 +127,12 @@ function renderProgressArea(max, name){
     let deleteEl = document.createElement("button")
     deleteEl.textContent = "Delete Exercise"
     deleteEl.style.backgroundColor = "#f5675d"
+    deleteEl.style.color = "#094b87"
 
     let resetEl = document.createElement("button")
     resetEl.textContent = "Reset PR"
     resetEl.style.backgroundColor = "#f5675d"
+    resetEl.style.color = "#094b87"
 
     let precautionEl = document.createElement('h3')
     precautionEl.textContent = "(Danger Zone) Double Click To Press Buttons Below"
