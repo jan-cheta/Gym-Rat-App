@@ -126,9 +126,11 @@ function renderProgressArea(max, name){
 
     let deleteEl = document.createElement("button")
     deleteEl.textContent = "Delete Exercise"
+    deleteEl.style.backgroundColor = "#f5675d"
 
     let resetEl = document.createElement("button")
     resetEl.textContent = "Reset PR"
+    resetEl.style.backgroundColor = "#f5675d"
 
     let precautionEl = document.createElement('h3')
     precautionEl.textContent = "(Danger Zone) Double Click To Press Buttons Below"
@@ -152,10 +154,10 @@ function renderProgressArea(max, name){
                 alert("Not a PR, Keep Grinding lil bro")
             }
         }
-       
         clearProgressArea()
         showExerciseContent()
     })
+
     //Delete Exercise
     deleteEl.addEventListener("dblclick",function(){
         remove(ref(database, `${exercise}/${name}`))
