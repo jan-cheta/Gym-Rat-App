@@ -2,18 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" type="text/css">
     <title>Gym Rat Tracker</title>
 </head>
 <body>
     <div class="container">
-        <h1>Gym Progress Tracker</h1>
-        <input type="text" id="big-input-el" placeholder="Bench Press">
-        <button id="big-input-btn">Add Exercise</button>
-        <ul id="exercise-list">
+        <div class="exercise-content">
+            <img src="weight.png">
+            <h1>Progress Tracker</h1>
+            <input type="text" id="big-input-el" placeholder="Enter Exercise Here">
+            <button id="big-input-btn">Add Exercise</button>
+            <h3>Select Exercise</h3>
+            <ul id="exercise-list">
+
+            </ul>
+        </div>
+
+        <div class="progress-content">
+
+        </div>
+
+        <div class="loading-screen">
+            <h1>Loading...</h1>
+        </div>
             
-        </ul>
+    
     </div>
     <script src="index.js" type="module"></script>
 </body>
