@@ -94,6 +94,7 @@ function hideExerciseContent(){
 function showExerciseContent(){
     renderExerciseListDB()
     clearExerciseList()
+    isKg = true
     loadDiv.style.display = "flex"
     setTimeout(()=>{
         loadDiv.style.display = "none"
@@ -101,23 +102,27 @@ function showExerciseContent(){
     },100)
     
 }
-
+let isKg = true
 //Render Progress Area
 function renderProgressArea(max, name){
+    
     let exerEl = document.createElement('h1')
     let maxEl = document.createElement('h1')
     exerEl.textContent = `${name}`
-    maxEl.textContent = `PR Max Weight: ${max}kg`
+    maxEl.textContent = `PR Max Weight: ${max.toFixed(1)}kg`
 
     let inputEl = document.createElement("input")
     inputEl.setAttribute("type", "text")
-    inputEl.setAttribute("placeholder", "New PR")
+    inputEl.setAttribute("placeholder", "Enter PR in kg")
 
     let submitEl = document.createElement("button")
     submitEl.textContent = "Submit PR"
 
+    let convertEl = document.createElement("button")
+    convertEl.textContent = "Convert to lbs"
+
     let backEl = document.createElement("button")
-    submitEl.textContent = "Back"
+    backEl.textContent = "Back"
 
     let deleteEl = document.createElement("button")
     deleteEl.textContent = "Delete Exercise"
@@ -130,13 +135,24 @@ function renderProgressArea(max, name){
 
     //Add Progress Input to DB
     submitEl.addEventListener("click",function(){
-        let newPR = parseInt(inputEl.value)
-        if(newPR > max){
-            addDataToDB(name,newPR)
-            
+        if(isKg){
+            let newPR = parseInt(inputEl.value)
+            if(newPR > max){
+                addDataToDB(name,newPR)
+                
+            }else{
+                alert("Not a PR, Keep Grinding lil bro")
+            }
         }else{
-            alert("Not a PR, Keep Grinding lil bro")
+            let newPR = parseInt(inputEl.value)*0.45359237
+            if(newPR > max*0.45359237){
+                addDataToDB(name,newPR)
+                
+            }else{
+                alert("Not a PR, Keep Grinding lil bro")
+            }
         }
+       
         clearProgressArea()
         showExerciseContent()
     })
@@ -158,8 +174,23 @@ function renderProgressArea(max, name){
         clearProgressArea()
         showExerciseContent()
     })
+    //lbs to kg
+    convertEl.addEventListener("dblclick",function(){
+        if(isKg){
+            maxEl.textContent = `PR Max Weight: ${(max/0.45359237).toFixed(1)}lbs` 
+            isKg = false
+            convertEl.textContent = "Convert to kg"
+            inputEl.setAttribute("placeholder", "Enter PR in lbs")
+        }else{
+            maxEl.textContent = `PR Max Weight: ${(max.toFixed(1))}kg` 
+            isKg = true
+            onvertEl.textContent = "Convert to lbs"
+            inputEl.setAttribute("placeholder", "Enter PR in kg")
+        }
+        
+    })
 
-    progressDiv.append(exerEl, maxEl, inputEl, submitEl, backEl, precautionEl, deleteEl, resetEl)
+    progressDiv.append(exerEl, maxEl, inputEl, submitEl,convertEl, backEl,precautionEl, deleteEl, resetEl)
 }
 
 
