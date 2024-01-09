@@ -155,12 +155,10 @@ function renderProgressArea(max, name){
 }
 
 
-//Delete Button For Exercise Item
-
 //Clear Progress Area
 function clearProgressArea(){
     progressDiv.innerHTML = ''
 }
-//Render
+
 
 
