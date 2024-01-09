@@ -116,6 +116,9 @@ function renderProgressArea(max, name){
     let submitEl = document.createElement("button")
     submitEl.textContent = "Submit PR"
 
+    let backEl = document.createElement("button")
+    submitEl.textContent = "Back"
+
     let deleteEl = document.createElement("button")
     deleteEl.textContent = "Delete Exercise"
 
@@ -150,8 +153,13 @@ function renderProgressArea(max, name){
         clearProgressArea()
         showExerciseContent()
     })
+    //Back Button
+    backEl.addEventListener("click",function(){
+        clearProgressArea()
+        showExerciseContent()
+    })
 
-    progressDiv.append(exerEl, maxEl, inputEl, submitEl, precautionEl, deleteEl, resetEl)
+    progressDiv.append(exerEl, maxEl, inputEl, submitEl, backEl, precautionEl, deleteEl, resetEl)
 }
 
 
